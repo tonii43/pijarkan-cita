@@ -23,7 +23,7 @@ window.CAMPAIGN_CONFIG = {
     {
       title: "NaraKarsa dari Pijarkan Cita",
       description: "Visi, misi, dan rencana kerja untuk IMTI FTUI 2027.",
-      url: "https://bit.ly/Pre-ReadPijarkanCita",
+      url: "https://drive.google.com/drive/folders/1OoocOYxprg2I8felYhYQdJ0mv_DkKLN3",
       icon: "document",
       featured: true,
       preview: {
