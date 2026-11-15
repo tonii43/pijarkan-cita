@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0B111B">
-    <meta name="description" content="Narakarsa dari Pijarkan Cita dan bukti pengundangan kampanye Marvin Dzaky Yahya No. Urut 2 untuk IMTI FTUI 2027.">
+    <meta name="description" content="NaraKarsa dari Pijarkan Cita dan bukti pengundangan kampanye Marvin Dzaky Yahya No. Urut 2 untuk IMTI FTUI 2027.">
     <title>Pijarkan Cita | IMTI FTUI 2027</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
   <body>
     <main class="page">
       <header class="hero">
+        <span class="hero-spotlight" aria-hidden="true"></span>
         <div class="hero-brand">
           <div class="asset-frame logo-frame" data-asset="logo" hidden>
             <span class="asset-placeholder">
@@ -34,11 +35,19 @@
           <h1><span class="hero-title-lead">Pijarkan</span> <em>Cita</em></h1>
         </div>
 
-        <div class="asset-frame portrait-frame" data-asset="portrait" hidden>
-          <span class="asset-placeholder">
-            <span>Foto calon</span>
-            <span class="asset-path"></span>
-          </span>
+        <div class="portrait">
+          <button class="asset-frame portrait-frame" type="button" data-asset="portrait"
+            aria-label="Nyalakan kilau pada foto Marvin Dzaky Yahya" disabled hidden>
+            <span class="asset-placeholder">
+              <span>Foto calon</span>
+              <span class="asset-path"></span>
+            </span>
+            <span class="portrait-flash" aria-hidden="true"></span>
+          </button>
+          <img class="portrait-motif motif-top" src="./assets/elemen-1.webp" width="174" height="176"
+            decoding="async" alt="" draggable="false">
+          <img class="portrait-motif motif-bottom" src="./assets/elemen-3.webp" width="176" height="175"
+            decoding="async" alt="" draggable="false">
         </div>
 
         <ul class="values" aria-label="Nilai kampanye" role="list">

@@ -4,7 +4,7 @@ Halaman tautan kampanye Marvin, calon Ketua IMTI FTUI 2027 nomor urut 2. Buka `i
 
 ## Isi tautan dan aset
 
-1. Buka `campaign.config.js` untuk mengatur `url` pada **Narakarsa dari Pijarkan Cita** dan **Bukti Pengundangan**. Kartu dengan `url: ""` menampilkan **Segera tersedia**. Ganti `preview.src` dan `preview.alt` pada tautan Narakarsa jika sampulnya berubah.
+1. Buka `campaign.config.js` untuk mengatur `url` pada **NaraKarsa dari Pijarkan Cita** dan **Bukti Pengundangan**. Kartu dengan `url: ""` menampilkan **Segera tersedia**. Ganti `preview.src` dan `preview.alt` pada tautan NaraKarsa jika sampulnya berubah.
 2. Untuk menambah tautan, salin satu blok di dalam `links`, lalu edit `title`, `description`, `url`, dan `icon`. Ikon yang tersedia adalah `document`, `folder`, dan `link`. Gunakan `featured: true` untuk kartu dengan aksen kuning. Urutan kartu mengikuti urutan blok di file.
 3. Logo dan foto dimuat dari `images.logo.src` dan `images.portrait.src`. Jika mengganti aset, sesuaikan path dengan nama file yang baru. Untuk foto berlatar transparan, coba `fit: "contain"`. Untuk mengatur area foto yang terlihat, ubah `position`, misalnya `"center 15%"`.
 4. Untuk Baskerville BT Italic, simpan webfont yang kamu punya lisensinya sebagai `assets/baskerville-bt-italic.woff2` dan isi `baskervilleFont: "./assets/baskerville-bt-italic.woff2"`. Halaman memakai Baskerville BT jika sudah tersedia di perangkat pengunjung, lalu memakai Baskervville Italic sebagai cadangan. Inter dimuat dari Google Fonts dengan Arial sebagai cadangan.

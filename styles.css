@@ -76,6 +76,18 @@ body {
   background: linear-gradient(90deg, var(--lime), #fefde957 39%, transparent 82%);
 }
 
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    circle at calc(50% + var(--pointer-x, 0) * 50%) calc(50% + var(--pointer-y, 0) * 50%),
+    #e3ef2626, #8599ff18 25%, transparent 63%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hero-brand {
   grid-area: brand;
   display: flex;
@@ -196,12 +208,22 @@ h1 em {
   }
 }
 
-.portrait-frame {
+.portrait {
   grid-area: portrait;
-  align-self: stretch;
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+
+.portrait-frame {
+  width: 100%;
   min-height: 13rem;
+  padding: 0;
   border: 1px dashed #b7c7d593;
   border-radius: .95rem;
+  color: inherit;
+  font: inherit;
+  touch-action: manipulation;
   background:
     radial-gradient(ellipse at 50% 85%, #3155d855, transparent 76%),
     #0b111b55;
@@ -220,8 +242,47 @@ h1 em {
 .portrait-frame:not(.has-image)::after { inset: auto .62rem .62rem auto; border-width: 0 1px 1px 0; }
 .portrait-frame .asset-placeholder { padding: .75rem; font-size: .875rem; }
 .portrait-frame .asset-path { font-size: .66rem; }
-.portrait-frame.has-image { border-style: solid; border-color: #b7c7d555; }
+.portrait-frame.has-image { border-style: solid; border-color: #b7c7d555; cursor: pointer; }
+.portrait-frame:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
 .portrait-frame img { object-fit: cover; }
+
+.portrait-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    circle at var(--tap-x, 50%) var(--tap-y, 50%),
+    #fefde9a6, #e3ef264a 24%, transparent 67%
+  );
+  opacity: 0;
+  transform-origin: var(--tap-x, 50%) var(--tap-y, 50%);
+  pointer-events: none;
+}
+
+.portrait-motif {
+  position: absolute;
+  z-index: 2;
+  width: clamp(1.5rem, 5.5vw, 3.35rem);
+  height: auto;
+  opacity: .68;
+  filter: drop-shadow(0 .2rem .55rem #0b111b99);
+  transform: rotate(var(--motif-angle));
+  pointer-events: none;
+}
+
+.motif-top {
+  --motif-angle: -12deg;
+  inset: -.55rem -.62rem auto auto;
+}
+
+.motif-bottom {
+  --motif-angle: 15deg;
+  inset: auto auto -.55rem -.62rem;
+  width: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.portrait-frame:not(.has-image) ~ .portrait-motif { visibility: hidden; }
+.portrait-frame:is(:active, :focus-visible) ~ .portrait-motif { opacity: 1; }
 
 .values {
   grid-area: values;
@@ -443,9 +504,43 @@ a.link-card.featured:active {
   .candidate { animation: reveal .48s var(--ease-out) .06s backwards; }
   .hero-title-lead { animation: reveal .58s var(--ease-out) .12s backwards; }
   .hero h1 em { animation: reveal .62s var(--ease-out) .2s backwards; }
+  .hero-spotlight { transition: opacity .35s var(--ease-out); }
+  .hero.is-tracking .hero-spotlight { opacity: 1; }
+
+  .portrait-frame.has-image {
+    transform: scale(var(--press-scale, 1));
+    transition: transform .25s var(--ease-out), border-color .25s, box-shadow .25s;
+  }
+
+  .portrait-frame.has-image:active { --press-scale: .97; }
+
   .portrait-frame img {
     animation: portrait-reveal .72s var(--ease-out);
-    transition: transform .45s var(--ease-out);
+    transition: transform .25s var(--ease-out);
+  }
+
+  .hero.is-tracking .portrait-frame.has-image {
+    transform: perspective(42rem) rotateX(calc(var(--pointer-y) * -5deg))
+      rotateY(calc(var(--pointer-x) * 7deg)) scale(var(--press-scale, 1));
+    border-color: #dce6ff97;
+    box-shadow: 0 .45rem 1.25rem #03071050;
+  }
+
+  .hero.is-tracking .portrait-frame img {
+    transform: scale(1.045) translate(calc(var(--pointer-x) * .23rem), calc(var(--pointer-y) * .23rem));
+  }
+
+  .portrait-motif { transition: transform .35s var(--ease-out), opacity .25s; }
+  .hero.is-tracking .portrait-motif { opacity: .88; }
+
+  .hero.is-tracking .motif-top {
+    transform: translate(calc(var(--pointer-x) * .42rem), calc(var(--pointer-y) * .48rem))
+      rotate(calc(var(--motif-angle) + var(--pointer-x) * 13deg)) scale(1.08);
+  }
+
+  .hero.is-tracking .motif-bottom {
+    transform: translate(calc(var(--pointer-x) * -.36rem), calc(var(--pointer-y) * -.42rem))
+      rotate(calc(var(--motif-angle) - var(--pointer-x) * 16deg)) scale(1.06);
   }
 
   .values li { animation: reveal .45s var(--ease-out) .28s backwards; }
@@ -469,7 +564,6 @@ a.link-card.featured:active {
   .open-icon { transition: transform .22s var(--ease-out); }
 
   @media (hover: hover) and (pointer: fine) {
-    .hero:hover .portrait-frame img { transform: scale(1.035); }
     a.link-card:hover { transform: translateY(-3px); }
     a.link-card:hover .open-icon { transform: translate(3px, -3px); }
   }

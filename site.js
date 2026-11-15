@@ -20,9 +20,58 @@
       frame.querySelector(".asset-placeholder").hidden = true;
       frame.classList.add("has-image");
       frame.append(image);
+      if (frame.dataset.asset === "portrait") {
+        image.draggable = false;
+        frame.disabled = false;
+      }
     }, { once: true });
     image.src = asset.src;
   }
+
+  const hero = document.querySelector(".hero");
+  const portrait = hero.querySelector(".portrait-frame");
+  const flash = portrait.querySelector(".portrait-flash");
+  const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+  let pointerFrame = 0;
+  let flashAnimation;
+
+  function stopTracking() {
+    cancelAnimationFrame(pointerFrame);
+    hero.classList.remove("is-tracking");
+  }
+
+  hero.addEventListener("pointermove", (event) => {
+    if (!motion.matches || event.pointerType !== "mouse") return;
+
+    cancelAnimationFrame(pointerFrame);
+    pointerFrame = requestAnimationFrame(() => {
+      const bounds = hero.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+      const y = ((event.clientY - bounds.top) / bounds.height) * 2 - 1;
+
+      hero.style.setProperty("--pointer-x", x.toFixed(3));
+      hero.style.setProperty("--pointer-y", y.toFixed(3));
+      hero.classList.add("is-tracking");
+    });
+  }, { passive: true });
+  hero.addEventListener("pointerleave", stopTracking);
+  motion.addEventListener?.("change", stopTracking);
+
+  portrait.addEventListener("click", (event) => {
+    const bounds = portrait.getBoundingClientRect();
+    const x = event.detail ? ((event.clientX - bounds.left) / bounds.width) * 100 : 50;
+    const y = event.detail ? ((event.clientY - bounds.top) / bounds.height) * 100 : 50;
+    flash.style.setProperty("--tap-x", `${x}%`);
+    flash.style.setProperty("--tap-y", `${y}%`);
+
+    flashAnimation?.cancel();
+    flashAnimation = motion.matches
+      ? flash.animate([
+        { opacity: .85, transform: "scale(.35)" },
+        { opacity: 0, transform: "scale(1.2)" },
+      ], { duration: 560, easing: "ease-out" })
+      : flash.animate([{ opacity: .34 }, { opacity: 0 }], { duration: 200 });
+  });
 
   if (config.baskervilleFont && "fonts" in document) {
     const font = new FontFace(

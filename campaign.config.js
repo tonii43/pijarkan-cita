@@ -21,14 +21,14 @@ window.CAMPAIGN_CONFIG = {
   // URL kosong menampilkan status "Segera tersedia".
   links: [
     {
-      title: "Narakarsa dari Pijarkan Cita",
+      title: "NaraKarsa dari Pijarkan Cita",
       description: "Visi, misi, dan rencana kerja untuk IMTI FTUI 2027.",
       url: "https://bit.ly/Pre-ReadPijarkanCita",
       icon: "document",
       featured: true,
       preview: {
         src: "./assets/cover-narakarsa.webp",
-        alt: "Sampul Grand Design Pijarkan Cita dengan foto Marvin Dzaky Yahya dan tiga nilai kampanye",
+        alt: "Sampul NaraKarsa dari Pijarkan Cita dengan foto Marvin Dzaky Yahya dan tiga nilai kampanye",
       },
     },
     {
