@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0B111B">
+    <meta name="description" content="Baca NaraKarsa dari Pijarkan Cita, Grand Design IMTI FTUI 2027.">
+    <title>NaraKarsa Grand Design | Pijarkan Cita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@1&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./navigation.css">
+    <script src="./optional-images.js" defer></script>
+    <script src="./campaign.config.js" defer></script>
+    <script src="./site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#konten">Ke isi halaman</a>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <span class="nav-photo" data-optional-image="./assets/foto-header.webp" aria-hidden="true"></span>
+        <a class="nav-home" href="./index.html" aria-label="Beranda Pijarkan Cita">
+          <img src="./assets/logo-pijarkan-cita.png" width="258" height="272" alt="">
+        </a>
+        <div class="nav-links">
+          <a href="./pijarkan-cita.html">Pijarkan Cita</a>
+          <a href="./index.html">Tautan</a>
+          <a class="nav-grand" href="./narakarsa.html" aria-current="page">
+            <span>NaraKarsa</span><small>Grand Design</small>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="page grand-page" id="konten">
+      <header class="grand-header">
+        <h1>NaraKarsa</h1>
+        <p>Grand Design IMTI FTUI 2027</p>
+      </header>
+
+      <section class="campaign-links" aria-labelledby="links-heading">
+        <h2 id="links-heading" class="visually-hidden">Dokumen Grand Design</h2>
+        <ul class="link-list" id="campaign-links" data-link-id="narakarsa"></ul>
+        <p class="link-empty" id="links-empty" hidden>Dokumen Grand Design akan segera tersedia.</p>
+        <noscript><p class="link-empty">Aktifkan JavaScript untuk melihat tautan ini.</p></noscript>
+      </section>
+
+      <footer class="footer"><p>#Pija2kanCita</p></footer>
+    </main>
+
+    <template id="link-card">
+      <span class="card-icon" aria-hidden="true"></span>
+      <span class="card-copy">
+        <span class="card-title"></span>
+        <span class="card-description"></span>
+      </span>
+      <span class="card-action"></span>
+      <span class="card-preview" hidden><img width="1600" height="900" decoding="async" alt=""></span>
+    </template>
+  </body>
+</html>

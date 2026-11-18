@@ -10,11 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@1&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./navigation.css">
+    <script src="./optional-images.js" defer></script>
     <script src="./campaign.config.js" defer></script>
     <script src="./site.js" defer></script>
   </head>
-  <body>
-    <main class="page">
+  <body id="atas">
+    <a class="skip-link" href="#konten">Ke isi halaman</a>
+
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <span class="nav-photo" data-optional-image="./assets/foto-header.webp" aria-hidden="true"></span>
+        <a class="nav-home" href="./index.html" aria-label="Beranda Pijarkan Cita">
+          <img src="./assets/logo-pijarkan-cita.png" width="258" height="272" alt="">
+        </a>
+        <div class="nav-links">
+          <a href="./pijarkan-cita.html">Pijarkan Cita</a>
+          <a href="#atas" aria-current="page">Tautan</a>
+          <a class="nav-grand" href="./narakarsa.html">
+            <span>NaraKarsa</span><small>Grand Design</small>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="page" id="konten">
       <header class="hero">
         <span class="hero-spotlight" aria-hidden="true"></span>
         <div class="hero-brand">
